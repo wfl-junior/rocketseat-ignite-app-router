@@ -6,7 +6,11 @@ export const metadata: Metadata = {
   title: "Busca",
 };
 
-interface SearchProps {}
+interface SearchProps {
+  searchParams: {
+    q: string;
+  };
+}
 
 async function Search({}: SearchProps): Promise<JSX.Element | null> {
   return (
