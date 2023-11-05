@@ -1,9 +1,11 @@
 import { GeistSans } from "geist/font";
 import type { Metadata } from "next";
 import { classNames } from "~/utils/classNames";
+import { env } from "~/utils/env";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(env.APP_URL),
   title: {
     absolute: "devstore",
     template: "%s | devstore",
