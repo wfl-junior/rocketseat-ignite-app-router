@@ -5,6 +5,12 @@ import { api } from "~/data/api";
 import type { Product } from "~/types/Product";
 import { formatPrice } from "~/utils/formatPrice";
 
+export async function generateStaticParams() {
+  const response = await api("/products/featured");
+  const featuredProducts = (await response.json()) as Product[];
+  return featuredProducts.map(product => ({ slug: product.slug }));
+}
+
 async function getProduct(slug: string) {
   const response = await api(`/products/${slug}`, {
     next: {
