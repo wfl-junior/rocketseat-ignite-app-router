@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { AddToCartButton } from "~/components/AddToCartButton";
 import { SizeButton } from "~/components/SizeButton";
 import { api } from "~/data/api";
 import type { Product } from "~/types/Product";
@@ -82,12 +83,7 @@ async function Product({ params }: ProductProps): Promise<JSX.Element | null> {
           </div>
         </div>
 
-        <button
-          type="button"
-          className="mt-8 flex h-12 items-center justify-center rounded-full bg-emerald-600 font-semibold text-white transition-colors hover:bg-emerald-500"
-        >
-          Adicionar ao carrinho
-        </button>
+        <AddToCartButton productId={product.id} />
       </div>
     </div>
   );

@@ -1,14 +1,15 @@
 "use client";
 
 import { createContext, useCallback, useContext, useState } from "react";
+import type { Product } from "~/types/Product";
 
 interface CartItem {
-  productId: number;
+  productId: Product["id"];
   quantity: number;
 }
 
 interface CartContextData {
-  items: CartItem[];
+  cartItems: CartItem[];
   addToCart: (productId: CartItem["productId"]) => void;
 }
 
@@ -51,8 +52,8 @@ export const CartContextProvider: React.FC<CartContextProviderProps> = ({
   return (
     <CartContext.Provider
       value={{
+        cartItems,
         addToCart,
-        items: cartItems,
       }}
     >
       {children}
