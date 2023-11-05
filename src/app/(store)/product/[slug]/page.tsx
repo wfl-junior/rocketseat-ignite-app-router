@@ -15,13 +15,20 @@ async function getProduct(slug: string) {
   return response.json() as Promise<Product>;
 }
 
-export const metadata: Metadata = {
-  title: "Product",
-};
-
 interface ProductProps {
   params: {
     slug: string;
+  };
+}
+
+export async function generateMetadata({
+  params,
+}: ProductProps): Promise<Metadata> {
+  const product = await getProduct(params.slug);
+
+  return {
+    title: product.title,
+    description: product.description,
   };
 }
 
