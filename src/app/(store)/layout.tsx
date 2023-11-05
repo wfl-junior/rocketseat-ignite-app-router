@@ -11,7 +11,7 @@ interface StoreLayoutProps {
 
 function StoreLayout({ children }: StoreLayoutProps): JSX.Element | null {
   return (
-    <div>
+    <div className="grid min-h-screen w-full max-w-[1600px] mx-auto grid-rows-[min-content_max-content] gap-5 p-8">
       <Header />
       {children}
     </div>

@@ -1,5 +1,6 @@
 import { GeistSans } from "geist/font";
 import type { Metadata } from "next";
+import { classNames } from "~/utils/classNames";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -12,8 +13,15 @@ interface RootLayoutProps {
 
 function RootLayout({ children }: RootLayoutProps): JSX.Element | null {
   return (
-    <html lang="pt-BR">
-      <body className={GeistSans.className}>{children}</body>
+    <html lang="pt-BR" dir="ltr">
+      <body
+        className={classNames(
+          GeistSans.className,
+          "bg-zinc-950 text-zinc-50 antialiased",
+        )}
+      >
+        {children}
+      </body>
     </html>
   );
 }
