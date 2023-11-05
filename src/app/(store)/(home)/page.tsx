@@ -5,7 +5,12 @@ import type { Product } from "~/types/Product";
 import { formatPrice } from "~/utils/formatPrice";
 
 async function getFeaturedProducts() {
-  const response = await api("/products/featured");
+  const response = await api("/products/featured", {
+    next: {
+      revalidate: 60 * 60, // 1 hour
+    },
+  });
+
   return response.json() as Promise<Product[]>;
 }
 
@@ -37,7 +42,9 @@ async function Home(): Promise<JSX.Element | null> {
         />
 
         <div className="absolute bottom-28 right-28 h-12 flex items-center gap-2 max-w-[280px] rounded-full border-2 border-zinc-500 bg-black/60 p-1 pl-5">
-          <span className="text-sm truncate">{highlightedProduct.title}</span>
+          <strong className="text-sm truncate font-medium">
+            {highlightedProduct.title}
+          </strong>
 
           <span className="flex items-center justify-center h-full rounded-full bg-violet-500 px-4 font-semibold whitespace-nowrap">
             {formatPrice(highlightedProduct.price)}
@@ -62,7 +69,9 @@ async function Home(): Promise<JSX.Element | null> {
           />
 
           <div className="absolute bottom-10 right-10 h-12 flex items-center gap-2 max-w-[280px] rounded-full border-2 border-zinc-500 bg-black/60 p-1 pl-5">
-            <span className="text-sm truncate">{product.title}</span>
+            <strong className="text-sm truncate font-medium">
+              {product.title}
+            </strong>
 
             <span className="flex items-center justify-center h-full rounded-full bg-violet-500 px-4 font-semibold whitespace-nowrap">
               {formatPrice(product.price)}
