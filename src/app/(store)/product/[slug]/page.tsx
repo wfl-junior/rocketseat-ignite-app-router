@@ -11,7 +11,7 @@ export async function generateStaticParams() {
   return featuredProducts.map(product => ({ slug: product.slug }));
 }
 
-async function getProduct(slug: string) {
+export async function getProduct(slug: string) {
   const response = await api(`/products/${slug}`, {
     next: {
       revalidate: 60 * 60, // 1 hour
