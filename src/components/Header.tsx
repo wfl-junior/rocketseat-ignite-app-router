@@ -33,6 +33,7 @@ export function Header({}: HeaderProps): JSX.Element | null {
 
         <Link href="/" className="flex items-center gap-2 hover:underline">
           <span className="text-sm">Conta</span>
+
           <Image
             alt=""
             width={24}
