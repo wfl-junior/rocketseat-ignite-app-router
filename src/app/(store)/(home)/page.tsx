@@ -1,8 +1,13 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { api } from "~/data/api";
 import type { Product } from "~/types/Product";
 import { formatPrice } from "~/utils/formatPrice";
+
+export const metadata: Metadata = {
+  title: "Home",
+};
 
 async function getFeaturedProducts() {
   const response = await api("/products/featured", {
@@ -26,7 +31,7 @@ async function Home(): Promise<JSX.Element | null> {
   }
 
   return (
-    <div className="grid flex-1 grid-cols-9 grid-rows-6 gap-6">
+    <div className="grid grid-cols-9 grid-rows-6 gap-6">
       <Link
         href={`/product/${highlightedProduct.slug}`}
         className="group relative col-span-6 row-span-6 rounded-lg bg-zinc-900 overflow-hidden flex items-end justify-center"

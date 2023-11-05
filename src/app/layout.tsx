@@ -4,7 +4,10 @@ import { classNames } from "~/utils/classNames";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "devstore",
+  title: {
+    absolute: "devstore",
+    template: "%s | devstore",
+  },
 };
 
 interface RootLayoutProps {
