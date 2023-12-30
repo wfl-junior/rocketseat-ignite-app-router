@@ -42,5 +42,7 @@ jobs:
           APP_URL: "http://localhost:3000"
           NEXT_PUBLIC_API_BASE_URL: "https://rocketseat-ignite-devstore-api.vercel.app/api"
         with:
+          install: false
+          wait-on-timeout: 120
           build: pnpm build
           start: pnpm start
